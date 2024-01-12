@@ -52,7 +52,7 @@
                                             <td class="js-task-content fw-semibold">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalDetalhesTarefa"
                                                    data-item="
-                                                   <h4>{{ $tarefa->titulo }}</h4>
+                                                   <h4>{{ $tarefa->titulo }} ({{ \Carbon\Carbon::createFromFormat('Y-m-d', $tarefa->data_inicio)->format('d/m/Y') }})</h4>
                                                    <br>
                                                    <h6>Descrição:</h6>
                                                    <p>{{ $tarefa->descricao }}</p>
@@ -108,7 +108,7 @@
                                             <td class="js-task-content fw-semibold">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalDetalhesTarefa"
                                                    data-item="
-                                                   <h4>{{ $tarefa->titulo }}</h4>
+                                                   <h4>{{ $tarefa->titulo }} ({{ \Carbon\Carbon::createFromFormat('Y-m-d', $tarefa->data_inicio)->format('d/m/Y') }})</h4>
                                                    <br>
                                                    <h6>Descrição:</h6>
                                                    <p>{{ $tarefa->descricao }}</p>
@@ -116,11 +116,6 @@
                                                     {{ $tarefa->titulo }}
                                                 </a>
                                             </td>
-                                            @isset($tarefa->data_conclusao)
-                                                <td class="js-task-content fw-semibold">
-                                                    Concluída em: {{ \Carbon\Carbon::createFromFormat('Y-m-d', $tarefa->data_conclusao)->format('d/m/Y') }}
-                                                </td>
-                                            @endisset
                                             <td class="text-end" style="width: 100px;">
                                                 <a class="js-task-remove btn btn-sm btn-link text-danger"
                                                    data-bs-toggle="modal" data-bs-target="#modalDelete"
