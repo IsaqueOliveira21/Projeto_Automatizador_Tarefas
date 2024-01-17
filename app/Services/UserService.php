@@ -29,7 +29,7 @@ class UserService {
                 'password' => $input['password'],
             ]);
             Mail::to($user->email)->send(new ConfirmEmail([$user->id]));
-            return redirect()->route('user.login');
+            return redirect()->route('user.login')->with('confirmEmail', 'Uma mensagem de confirmação foi enviada para seu e-mail!');
         } catch (Exception $e) {
             dd($e->getMessage());
         }

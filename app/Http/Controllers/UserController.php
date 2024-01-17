@@ -55,12 +55,21 @@ class UserController extends Controller
         return $this->service->create($input);
     }
 
-    public function confirmEmail($id){
+    public function confirmEmail($id){ // PASSAR PARA O SERVICE
         $user = User::find($id);
-        $user->update([
-            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        return redirect()->route('user.login');
+        if(!isset($user->email_verified_at)) {
+            $user->update([
+                'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            return redirect()->route('user.login')->with('confirmEmail', 'E-mail verificado com sucesso!');
+        } else {
+            return redirect()->route('user.login')->with('confirmEmail', 'Seu e-mail ja foi verificado!');
+        }
+    }
+
+    public function resendEmail(User $user) {
+        Mail::to($user->email)->send(new ConfirmEmail([$user->id]));
+        return redirect()->route('user.login')->with('confirmEmail', 'E-mail de confirmação reenviado para seu email!');
     }
 
     public function edit() {

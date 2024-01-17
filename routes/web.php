@@ -11,9 +11,10 @@ Auth::routes(['verify' => true]); // Verifica se o email do usuario foi verifica
 Route::get('/denied', [UserController::class, 'accessDenied'])->name('login');
 Route::get('/', [UserController::class, 'login'])->name('user.login');
 Route::get('/create', [UserController::class, 'create'])->name('user.create');
+Route::get('/confirmEmail/{user}', [UserController::class, 'confirmEmail'])->name('user.confirmEmail');
+Route::get('/resendEmail/{user}', [UserController::class, 'resendEmail'])->name('user.resendEmail');
 Route::post('/store', [UserController::class, 'store'])->name('user.store');
 Route::post('/login', [UserController::class, 'formLogin'])->name('user.formLogin');
-Route::get('/confirmEmail/{user}', [UserController::class, 'confirmEmail'])->name('user.confirmEmail');
 
 Route::get('teste-envio-email', function () {
     Mail::to('isaque16.oliveira@gmail.com')->send(new \App\Mail\TesteEnvioMail());

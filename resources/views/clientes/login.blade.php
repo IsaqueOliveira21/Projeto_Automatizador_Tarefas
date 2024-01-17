@@ -29,8 +29,14 @@
                 <div class="hero-static col-sm-8 col-md-6 col-xl-4 d-flex align-items-center p-2 px-sm-0">
                     <!-- Sign In Block -->
                     <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
-                        <div
-                            class="block-content block-content-full px-lg-5 px-xl-6 py-4 py-md-5 py-lg-6 bg-body-extra-light">
+                        @if(session('confirmEmail'))
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <p class="mb-0">{{ session('confirmEmail') }}</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        @endif
+                        <div class="block-content block-content-full px-lg-5 px-xl-6 py-4 py-md-5 py-lg-6 bg-body-extra-light">
                             <!-- Header -->
                             <div class="mb-2 text-center">
                                 <a class="link-fx fw-bold fs-1" href="#">
@@ -80,7 +86,7 @@
                                 <div class="fw-semibold fs-sm py-1 text-center">
                                     <a href="{{ Route('user.create') }}">Crie uma conta</a>
                                 </div>
-                            @if(session('error'))
+                                @if(session('error'))
                                     <div class="alert alert-danger alert-dismissible" role="alert">
                                         <p class="mb-0">{{ session('error') }}</p>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
