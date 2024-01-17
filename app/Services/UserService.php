@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Mail\ConfirmEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 
 class UserService {
 
@@ -21,11 +23,12 @@ class UserService {
     }
     public function create(array $input) {
         try {
-            User::create([
+            $user = User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => $input['password'],
             ]);
+            Mail::to($user->email)->send(new ConfirmEmail([$user->id]));
             return redirect()->route('user.login');
         } catch (Exception $e) {
             dd($e->getMessage());

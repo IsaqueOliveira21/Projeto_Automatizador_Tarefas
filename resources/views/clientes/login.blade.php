@@ -80,7 +80,7 @@
                                 <div class="fw-semibold fs-sm py-1 text-center">
                                     <a href="{{ Route('user.create') }}">Crie uma conta</a>
                                 </div>
-                                @if(session('error'))
+                            @if(session('error'))
                                     <div class="alert alert-danger alert-dismissible" role="alert">
                                         <p class="mb-0">{{ session('error') }}</p>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -89,27 +89,8 @@
                                 @endif
                             </form>
                             <!-- END Sign In Form -->
-                        </div>
-                        <div class="block-content bg-body">
-                            <div class="d-flex justify-content-center text-center push">
-                                <a class="item item-circle item-tiny me-1 bg-default" data-toggle="theme"
-                                   data-theme="default" href="#"></a>
-                                <a class="item item-circle item-tiny me-1 bg-xwork" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xwork.min.css') }}" href="#"></a>
-                                <a class="item item-circle item-tiny me-1 bg-xmodern" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xmodern.min.css') }}" href="#"></a>
-                                <a class="item item-circle item-tiny me-1 bg-xeco" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xeco.min.css') }}" href="#"></a>
-                                <a class="item item-circle item-tiny me-1 bg-xsmooth" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xsmooth.min.css') }}" href="#"></a>
-                                <a class="item item-circle item-tiny me-1 bg-xinspire" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xinspire.min.css') }}" href="#"></a>
-                                <a class="item item-circle item-tiny me-1 bg-xdream" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xdream.min.css') }}" href="#"></a>
-                                <a class="item item-circle item-tiny me-1 bg-xpro" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xpro.min.css') }}" href="#"></a>
-                                <a class="item item-circle item-tiny bg-xplay" data-toggle="theme"
-                                   data-theme="{{ asset('assets/css/themes/xplay.min.css') }}" href="#"></a>
+                            <div class="fw-semibold fs-sm py-1 text-center">
+                                <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=suporte@autotask.com&su=Problemas para acessar%20do%20Email&body=Informe-nos seu problema" target="_blank">Problemas para acessar? Entre em contato conosco</a>
                             </div>
                         </div>
                     </div>
