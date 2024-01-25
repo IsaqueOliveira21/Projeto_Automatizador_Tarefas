@@ -37,7 +37,7 @@
                     @else
                         @foreach($tarefas as $tarefa)
                             @if($tarefa->realizada == 0)
-                                <div class="js-task block block-rounded block-fx-pop block-fx-pop mb-2 animated fadeIn {{ isset($tarefa->data_conclusao) && \Carbon\Carbon::now()->format('Y-m-d') >= $tarefa->data_conclusao ? 'bg-danger-light' : '' }}"
+                                <div class="js-task block block-rounded block-fx-pop block-fx-pop mb-2 animated fadeIn {{ isset($tarefa->data_conclusao) && \Carbon\Carbon::now()->format('Y-m-d') > $tarefa->data_conclusao ? 'bg-danger-light' : (\Carbon\Carbon::now()->format('Y-m-d') == $tarefa->data_conclusao ? 'bg-warning-light' : '' ) }}"
                                      data-task-id="9" data-task-completed="false" data-task-starred="false">
                                     <table class="table table-borderless table-vcenter mb-0">
                                         <tr>
@@ -57,9 +57,11 @@
                                                    <h6>Descrição:</h6>
                                                    <p>{{ $tarefa->descricao }}</p>
                                                    @if(isset($tarefa->data_conclusao))
-                                                      <h6 class='text-{{ \Carbon\Carbon::now()->format('Y-m-d') >= $tarefa->data_conclusao ? 'warning' : 'primary' }}'>
-                                                        @if(\Carbon\Carbon::now()->format('Y-m-d') >= $tarefa->data_conclusao)
+                                                      <h6 class='text-{{\Carbon\Carbon::now()->format('Y-m-d') > $tarefa->data_conclusao ? 'danger' : (\Carbon\Carbon::now()->format('Y-m-d') == $tarefa->data_conclusao ? 'warning' : 'primary' )}}'>
+                                                        @if(\Carbon\Carbon::now()->format('Y-m-d') > $tarefa->data_conclusao)
                                                             {{ '<i class="fa fa-1x fa-exclamation-triangle"></i>' }}
+                                                        @elseif(\Carbon\Carbon::now()->format('Y-m-d') == $tarefa->data_conclusao)
+                                                            {{ '<i class="fa fa-1x fa-clock"></i>' }}
                                                         @endif
                                                          Prazo: {{ \Carbon\Carbon::createFromFormat('Y-m-d', $tarefa->data_conclusao)->format('d/m/Y') }}
                                                       </h6>
@@ -89,7 +91,7 @@
                  aria-labelledby="btabs-animated-slideup-profile-tab">
                 <div class="js-task-list">
                     @if(count($tarefas->where('realizada', 1)) == 0)
-                        <h5 class="text-center mt-0 mb-0"">Nenhuma tarefa aqui...</h5>
+                        <h5 class="text-center mt-0 mb-0">Nenhuma tarefa aqui...</h5>
                     @else
                         @foreach($tarefas as $tarefa)
                             @if($tarefa->realizada == 1)

@@ -67,17 +67,6 @@
                         </span>
                                     </div>
                                 </div>
-                                <div
-                                    class="d-sm-flex justify-content-sm-between align-items-sm-center text-center text-sm-start mb-4">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="login-remember-me"
-                                               name="login-remember-me" checked>
-                                        <label class="form-check-label" for="login-remember-me">Remember Me</label>
-                                    </div>
-                                    <div class="fw-semibold fs-sm py-1">
-                                        <a href="javascript:void(0)">Forgot Password?</a>
-                                    </div>
-                                </div>
                                 <div class="text-center mb-4">
                                     <button type="submit" class="btn btn-hero btn-primary">
                                         <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Sign In
@@ -85,6 +74,11 @@
                                 </div>
                                 <div class="fw-semibold fs-sm py-1 text-center">
                                     <a href="{{ Route('user.create') }}">Crie uma conta</a>
+                                </div>
+                                <div class="text-center mb-4">
+                                    <div class="fw-semibold fs-sm py-1">
+                                        <a href="{{ route('user.forgotPassword') }}">Esqueceu a senha?</a>
+                                    </div>
                                 </div>
                                 @if(session('error'))
                                     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -95,9 +89,6 @@
                                 @endif
                             </form>
                             <!-- END Sign In Form -->
-                            <div class="fw-semibold fs-sm py-1 text-center">
-                                <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=suporte@autotask.com&su=Problemas para acessar%20do%20Email&body=Informe-nos seu problema" target="_blank">Problemas para acessar? Entre em contato conosco</a>
-                            </div>
                         </div>
                     </div>
                     <!-- END Sign In Block -->

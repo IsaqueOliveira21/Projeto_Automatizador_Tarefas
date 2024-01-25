@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
@@ -16,6 +17,9 @@ class UserController extends Controller
     public function __construct(UserService $userService)
     {
         $this->service = $userService;
+    }
+    public function forgotPassword() {
+        return view('auth.forgotPass');
     }
 
     public function accessDenied() {
@@ -26,10 +30,16 @@ class UserController extends Controller
         return view('clientes.login');
     }
 
-    public function logout() {
+    public function logout(Request $request) {
+        // Adicione a lógica personalizada ao fazer logout, se necessário
+        // ...
+
         Auth::logout();
-        return redirect()->route('user.login');
+
+        // Remova o cookie de exibição do pop-up ao fazer logout
+        return redirect()->route('user.login')->withCookie(Cookie::forget('popDisplayed'));
     }
+
 
     public function formLogin(Request $request) {
         $input = $request->validate([

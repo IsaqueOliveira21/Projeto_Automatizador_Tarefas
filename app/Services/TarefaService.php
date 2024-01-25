@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Models\NotificacaoTarefa;
 use App\Models\Tarefa;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TarefaService
 {
@@ -15,6 +17,29 @@ class TarefaService
     }
 
     public function index($search = null) {
+        $notificacoesIds = [];
+        $notificacoes = DB::table('notificacoes_tarefas')
+            ->join('tarefas', 'notificacoes_tarefas.tarefa_id', '=', 'tarefas.id')
+            ->selectRaw('notificacoes_tarefas.id, tarefas.id AS tarefa_id, notificacoes_tarefas.visualizado, notificacoes_tarefas.deleted_at AS removido_em, tarefas.titulo')
+            ->where('notificacoes_tarefas.user_id', auth()->user()->id)
+            ->where('tarefas.realizada', 0)
+            ->orderBy('notificacoes_tarefas.id', 'DESC')
+            ->get();
+        foreach($notificacoes as $notificacao) {
+            $notificacoesIds[] = $notificacao->tarefa_id;
+        }
+        $tarefas = Tarefa::where('user_id', auth()->user()->id)
+            ->where('realizada', 0)
+            ->whereNotNull('data_conclusao')
+            ->get();
+        foreach($tarefas as $tarefa) {
+            if(!in_array($tarefa->id, $notificacoesIds)) {
+                NotificacaoTarefa::create([
+                    'user_id' => auth()->user()->id,
+                    'tarefa_id' => $tarefa->id,
+                ]);
+            }
+        }
         $tarefas = Auth::user()->tarefas()->get();
         return $tarefas;
     }
@@ -48,12 +73,10 @@ class TarefaService
             if($tarefa->realizada == 0) {
                 $tarefa->update([
                     'realizada' => 1,
-                    'data_conclusao' => Carbon::now()->format('Y-m-d')
                 ]);
             } else {
                 $tarefa->update([
                     'realizada' => 0,
-                    'data_conclusao' => null
                 ]);
             }
             return redirect()->back();

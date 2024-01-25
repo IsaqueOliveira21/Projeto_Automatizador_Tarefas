@@ -50,24 +50,8 @@
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.css') }}">
 </head>
 <body>
-
 <div id="page-container"
      class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed page-header-dark main-content-boxed">
-    <!-- Side Overlay-->
-    <!-- END Side Overlay -->
-
-    <!-- Sidebar -->
-    <!--
-      Sidebar Mini Mode - Display Helper classes
-
-      Adding 'smini-hide' class to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
-      Adding 'smini-show' class to an element will make it visible (opacity: 1) when the sidebar is in mini mode
-        If you would like to disable the transition animation, make sure to also add the 'no-transition' class to your element
-
-      Adding 'smini-hidden' to an element will hide it when the sidebar is in mini mode
-      Adding 'smini-visible' to an element will show it (display: inline-block) only when the sidebar is in mini mode
-      Adding 'smini-visible-block' to an element will show it (display: block) only when the sidebar is in mini mode
-    -->
     <nav id="sidebar" aria-label="Main Navigation">
         <!-- Side Header (mini Sidebar mode) -->
         <div class="smini-visible-block">
@@ -85,7 +69,7 @@
         <div class="smini-hidden">
             <div class="content-header justify-content-lg-center bg-primary">
                 <!-- Logo -->
-                <a class="fw-semibold text-white tracking-wide" href="index.html">
+                <a class="fw-semibold text-white tracking-wide" href="#">
                     Auto<span class="opacity-75">task</span>
                 </a>
                 <!-- END Logo -->
@@ -130,10 +114,10 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
+                        <a class="nav-main-link" href="{{ Route('notificacoes.index') }}">
                             <i class="nav-main-link-icon fa fa-bell"></i>
                             <span class="nav-main-link-name">Notificações</span>
-                            <span class="nav-main-link-badge badge rounded-pill bg-info">6</span>
+                            <span class="nav-main-link-badge badge rounded-pill bg-info">{{ count(\App\Models\NotificacaoTarefa::where('user_id', auth()->user()->id)->where('visualizado', 0)->whereNull('deleted_at')->get()) }}</span>
                         </a>
                     </li>
                     <li class="nav-main-heading">Tarefas</li>
@@ -199,97 +183,6 @@
                     <i class="fa fa-fw fa-bars"></i>
                 </button>
                 <!-- END Toggle Sidebar -->
-
-                <!-- Notifications Dropdown -->
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn btn-alt-secondary" id="page-header-notifications-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-bell"></i>
-                        <span class="badge bg-black-50 rounded-pill">6</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-lg p-0"
-                         aria-labelledby="page-header-notifications-dropdown">
-                        <div class="bg-primary-dark rounded-top fw-semibold text-white text-center p-3">
-                            Notifications
-                        </div>
-                        <ul class="nav-items my-2">
-                            <li>
-                                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                    <div class="flex-shrink-0 mx-3">
-                                        <i class="fa fa-fw fa-user-plus text-primary"></i>
-                                    </div>
-                                    <div class="flex-grow-1 fs-sm pe-2">
-                                        <div class="fw-semibold">John Doe send you a friend request!</div>
-                                        <div class="text-muted">6 min ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                    <div class="flex-shrink-0 mx-3">
-                                        <i class="fa fa-fw fa-user-plus text-primary"></i>
-                                    </div>
-                                    <div class="flex-grow-1 fs-sm pe-2">
-                                        <div class="fw-semibold">Elisa Doe send you a friend request!</div>
-                                        <div class="text-muted">10 min ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                    <div class="flex-shrink-0 mx-3">
-                                        <i class="fa fa-fw fa-check-circle text-success"></i>
-                                    </div>
-                                    <div class="flex-grow-1 fs-sm pe-2">
-                                        <div class="fw-semibold">Backup completed successfully!</div>
-                                        <div class="text-muted">2 hours ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                    <div class="flex-shrink-0 mx-3">
-                                        <i class="fa fa-fw fa-user-plus text-primary"></i>
-                                    </div>
-                                    <div class="flex-grow-1 fs-sm pe-2">
-                                        <div class="fw-semibold">George Smith send you a friend request!</div>
-                                        <div class="text-muted">3 hours ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                    <div class="flex-shrink-0 mx-3">
-                                        <i class="fa fa-exclamation-circle text-warning"></i>
-                                    </div>
-                                    <div class="flex-grow-1 fs-sm pe-2">
-                                        <div class="fw-semibold">You are running out of space. Please consider upgrading
-                                            your plan.
-                                        </div>
-                                        <div class="text-muted">1 day ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                    <div class="flex-shrink-0 mx-3">
-                                        <i class="fa fa-envelope-open text-info"></i>
-                                    </div>
-                                    <div class="flex-grow-1 fs-sm pe-2">
-                                        <div class="fw-semibold">You have a new message!</div>
-                                        <div class="text-muted">2 days ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="p-2 border-top">
-                            <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-eye opacity-50 me-1"></i> View All
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Notifications Dropdown -->
             </div>
             <!-- END Left Section -->
 
@@ -492,14 +385,16 @@
 <script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
-<script src="{{asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
-<script src="{{asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{ asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
+<script src="{{ asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/dropzone/min/dropzone.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/pwstrength-bootstrap/pwstrength-bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/be_comp_dialogs.min.js') }}"></script>
 <script>Dashmix.helpersOnLoad(['js-highlightjs', 'jq-magnific-popup']);</script>
 <script>Dashmix.helpersOnLoad(['jq-notify', 'jq-select2', 'jq-datepicker', 'js-flatpickr']);</script>
 <script>Dashmix.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-colorpicker', 'jq-maxlength', 'jq-select2', 'jq-rangeslider', 'jq-masked-inputs', 'jq-pw-strength']);</script>

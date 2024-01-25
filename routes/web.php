@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CronogramaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificacaoTarefaController;
 use App\Http\Controllers\TarefaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,7 @@ Route::get('/', [UserController::class, 'login'])->name('user.login');
 Route::get('/create', [UserController::class, 'create'])->name('user.create');
 Route::get('/confirmEmail/{user}', [UserController::class, 'confirmEmail'])->name('user.confirmEmail');
 Route::get('/resendEmail/{user}', [UserController::class, 'resendEmail'])->name('user.resendEmail');
+Route::get('/forgotPassword', [UserController::class, 'forgotPassword'])->name('user.forgotPassword');
 Route::post('/store', [UserController::class, 'store'])->name('user.store');
 Route::post('/login', [UserController::class, 'formLogin'])->name('user.formLogin');
 
@@ -27,6 +29,11 @@ Route::prefix('autotask')->middleware(['auth', 'verified'])->group(function() {
     Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
     Route::get('/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/update', [UserController::class, 'update'])->name('user.update');
+    Route::prefix('notificacoes')->controller(NotificacaoTarefaController::class)->group(function () {
+        Route::get('index', 'index')->name('notificacoes.index');
+        Route::get('visualizar/{notificacao}', 'visualizarNotificacao')->name('notificacoes.visualizar');
+        Route::get('delete/{notificacao}', 'removerNotificacao')->name('notificacoes.delete');
+    });
     Route::prefix('tarefas')->controller(TarefaController::class)->group(function() {
         Route::get('index', 'index')->name('tarefas.index');
         Route::get('concluir-tarefa/{tarefa}', 'concluirTarefa')->name('tarefas.concluir');

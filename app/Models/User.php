@@ -56,4 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail // implements Must
     public function cronogramas() {
         return $this->hasMany(Cronograma::class);
     }
+    public function notificacoesTarefas() {
+        return $this->hasMany(NotificacaoTarefa::class);
+    }
 }

@@ -1,5 +1,4 @@
 @extends('clientes.template')
-
 @section('titulo', 'CRONOGRAMA')
 
 @section('conteudo')
