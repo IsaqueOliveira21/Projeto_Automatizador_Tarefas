@@ -51,19 +51,20 @@
                                 <!-- Reminder Form -->
                                 <!-- jQuery Validation (.js-validation-reminder class is initialized in js/pages/op_auth_reminder.min.js which was auto compiled from _js/pages/op_auth_reminder.js) -->
                                 <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                <form class="js-validation-reminder" action="" method="POST">
+                                <form class="js-validation-reminder" action="{{ route('user.redefinirSenhaEmail') }}" method="POST">
+                                    @csrf
                                     <div class="mb-4">
                                         <div class="input-group input-group-lg">
-                                            <input type="text" class="form-control" id="reminder-credential"
-                                                   name="reminder-credential" placeholder="E-mail">
+                                            <input type="text" class="form-control" id="email"
+                                                   name="email" placeholder="E-mail">
                                             <span class="input-group-text">
-                              <i class="fa fa-at"></i>
-                            </span>
+                                                <i class="fa fa-at"></i>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="text-center mb-4">
                                         <button type="submit" class="btn btn-hero btn-primary">
-                                            <i class="fa fa-fw fa-reply opacity-50 me-1"></i> Reset Password
+                                            <i class="fa fa-fw fa-reply opacity-50 me-1"></i> Enviar e-mail de redefinição
                                         </button>
                                     </div>
                                 </form>

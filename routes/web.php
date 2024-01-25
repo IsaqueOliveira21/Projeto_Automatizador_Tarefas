@@ -15,6 +15,11 @@ Route::get('/create', [UserController::class, 'create'])->name('user.create');
 Route::get('/confirmEmail/{user}', [UserController::class, 'confirmEmail'])->name('user.confirmEmail');
 Route::get('/resendEmail/{user}', [UserController::class, 'resendEmail'])->name('user.resendEmail');
 Route::get('/forgotPassword', [UserController::class, 'forgotPassword'])->name('user.forgotPassword');
+
+Route::get('/forgotPassword/newPassword/{user}', [UserController::class, 'redefinirSenhaView'])->name('user.newPassword');
+Route::post('/forgotPassword/mail', [UserController::class, 'redefinirSenhaEmail'])->name('user.redefinirSenhaEmail');
+Route::post('forgotPassword/redefinirSenha/{user}', [UserController::class, 'redefinirSenha'])->name('user.redefinirSenha');
+
 Route::post('/store', [UserController::class, 'store'])->name('user.store');
 Route::post('/login', [UserController::class, 'formLogin'])->name('user.formLogin');
 

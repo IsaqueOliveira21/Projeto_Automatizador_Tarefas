@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Mail\ConfirmEmail;
+use App\Mail\RedefinirSenhaMail;
 use App\Models\User;
 use App\Services\UserService;
 use Carbon\Carbon;
@@ -22,6 +23,23 @@ class UserController extends Controller
         return view('auth.forgotPass');
     }
 
+    public function redefinirSenhaEmail(Request $request) {
+        $user = User::where('email', $request->email)->first();
+        if($user) {
+            Mail::to($request->email)->send(new RedefinirSenhaMail($user->id));
+        }
+    }
+    public function redefinirSenhaView(User $user)
+    {
+        return view('auth.newPass', compact('user'));
+    }
+    public function redefinirSenha(User $user, Request $request)
+    {
+        $user->update([
+            'password' => bcrypt($request->password),
+        ]);
+        return redirect()->route('user.login');
+    }
     public function accessDenied() {
         return redirect()->route('user.login')->with('error', 'Faça Login para acessar esta página!');
     }
@@ -31,13 +49,8 @@ class UserController extends Controller
     }
 
     public function logout(Request $request) {
-        // Adicione a lógica personalizada ao fazer logout, se necessário
-        // ...
-
         Auth::logout();
-
-        // Remova o cookie de exibição do pop-up ao fazer logout
-        return redirect()->route('user.login')->withCookie(Cookie::forget('popDisplayed'));
+        return redirect()->route('user.login');
     }
 
 
