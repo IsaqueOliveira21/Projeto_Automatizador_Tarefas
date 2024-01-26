@@ -35,7 +35,8 @@ class NotificacaoTarefaController extends Controller
                 ]);
             }
         }
-        return view('clientes.notificacoes.index', compact('notificacoes'));
+        $notificacoesQtd = count(NotificacaoTarefa::where('user_id', auth()->user()->id)->get());
+        return view('clientes.notificacoes.index', compact('notificacoes', 'notificacoesQtd'));
     }
 
     public function visualizarNotificacao(NotificacaoTarefa $notificacao) {
