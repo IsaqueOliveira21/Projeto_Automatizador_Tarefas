@@ -42,9 +42,10 @@ class CronogramaController extends Controller
                     'dia' => $dia
                 ]);
             }
-            return redirect()->route('cronograma.index');
+            return redirect()->route('cronograma.index')->with('notificacao', ['tipo' => 'success', 'msg' => 'Atividade cadastrada com sucesso!']);
         } catch(\Exception $e) {
-            dd($e->getMessage());
+            //dd($e->getMessage());
+            return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao cadastrar esta atividade...']);
         }
     }
 
@@ -63,17 +64,28 @@ class CronogramaController extends Controller
             }
             return redirect()->route('cronograma.index');
         } catch(Exception $e) {
-            dd($e->getMessage());
+            //dd($e->getMessage());
+            return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao editar esta atividade...']);
         }
     }
 
     public function delete(Request $request) {
-        $this->cronograma->find($request->id)->delete();
-        return redirect()->route('cronograma.index');
+        try {
+            $this->cronograma->find($request->id)->delete();
+            return redirect()->route('cronograma.index');
+        } catch (\Exception $e) {
+            //dd($e->getMessage());
+            return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao deletar esta atividade...']);
+        }
     }
 
     public function deleteAll() {
-        $atividades = $this->cronograma->where('user_id', auth()->user()->id)->delete();
-        return redirect()->route('cronograma.index')->with('msg', 'Todas as atividades foram removidas com sucesso!');
+        try {
+            $atividades = $this->cronograma->where('user_id', auth()->user()->id)->delete();
+            return redirect()->route('cronograma.index')->with('msg', 'Todas as atividades foram removidas com sucesso!');
+        } catch(\Exception $e) {
+            //dd($e->getMessage());
+            return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao deletar esta atividade...']);
+        }
     }
 }

@@ -34,10 +34,12 @@ class TarefaService
             ->get();
         foreach($tarefas as $tarefa) {
             if(!in_array($tarefa->id, $notificacoesIds)) {
-                NotificacaoTarefa::create([
-                    'user_id' => auth()->user()->id,
-                    'tarefa_id' => $tarefa->id,
-                ]);
+                if(Carbon::now()->format('Y-m-d') > $tarefa->data_conclusao) {
+                    NotificacaoTarefa::create([
+                        'user_id' => auth()->user()->id,
+                        'tarefa_id' => $tarefa->id,
+                    ]);
+                }
             }
         }
         $tarefas = Auth::user()->tarefas()->get();
@@ -64,7 +66,8 @@ class TarefaService
             }
             return "Tarefa criada com sucesso!";
         } catch(Exception $e) {
-            dd($e->getMessage());
+            //dd($e->getMessage());
+            return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao cadastrar esta tarefa...']);
         }
     }
 
@@ -81,7 +84,8 @@ class TarefaService
             }
             return redirect()->back();
         } catch(Exception $e) {
-            dd($e->getMessage());
+            //dd($e->getMessage());
+            return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao concluir esta tarefa...']);
         }
     }
 

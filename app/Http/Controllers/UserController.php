@@ -28,6 +28,7 @@ class UserController extends Controller
         if($user) {
             Mail::to($request->email)->send(new RedefinirSenhaMail($user->id));
         }
+        return redirect()->route('user.login')->with('msg', 'Enviamos um e-mail de redefinição de senha para você.');
     }
     public function redefinirSenhaView(User $user)
     {
@@ -38,7 +39,7 @@ class UserController extends Controller
         $user->update([
             'password' => bcrypt($request->password),
         ]);
-        return redirect()->route('user.login');
+        return redirect()->route('user.login')->with('msg', 'Senha redefinida com sucesso!');
     }
     public function accessDenied() {
         return redirect()->route('user.login')->with('error', 'Faça Login para acessar esta página!');
@@ -84,15 +85,15 @@ class UserController extends Controller
             $user->update([
                 'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
-            return redirect()->route('user.login')->with('confirmEmail', 'E-mail verificado com sucesso!');
+            return redirect()->route('user.login')->with('msg', 'E-mail verificado com sucesso!');
         } else {
-            return redirect()->route('user.login')->with('confirmEmail', 'Seu e-mail ja foi verificado!');
+            return redirect()->route('user.login')->with('msg', 'Seu e-mail ja foi verificado!');
         }
     }
 
     public function resendEmail(User $user) {
         Mail::to($user->email)->send(new ConfirmEmail([$user->id]));
-        return redirect()->route('user.login')->with('confirmEmail', 'E-mail de confirmação reenviado para seu email!');
+        return redirect()->route('user.login')->with('msg', 'E-mail de confirmação reenviado para seu email!');
     }
 
     public function edit() {

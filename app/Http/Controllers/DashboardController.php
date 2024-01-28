@@ -10,8 +10,8 @@ class DashboardController extends Controller
 {
     public function index() {
         $graficos = [];
-        // GRAFICO BASIC COLUMNS
 
+        // GRAFICO BASIC COLUMNS
         $query = DB::table('tarefas')
             ->selectRaw("CONCAT(MONTH(data_inicio), '/', YEAR(data_inicio)) AS mes_ano, realizada, COUNT(*) AS total")
             ->where('user_id', auth()->user()->id)
@@ -29,6 +29,7 @@ class DashboardController extends Controller
             $graficos['basicColumn'] = array_reverse($graficos['basicColumn']);
         }
         // END GRAFICO BASIC COLUMNS
+
         return view('clientes.dashboard.index', compact(['graficos']));
     }
 }

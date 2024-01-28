@@ -4,17 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>Login</title>
+    <title>Fluid</title>
 
-    <meta name="description"
-          content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
-    <link rel="shortcut icon" href="assets/media/favicons/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180"
-          href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/media/various/logo.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/favicon.png') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/dashmix.min.css') }}">
 </head>
@@ -24,25 +22,22 @@
     <!-- Main Container -->
     <main id="main-container">
         <!-- Page Content -->
-        <div class="bg-image" style="background-image: url({{ asset('assets/media/photos/photo19@2x.jpg') }});">
+        <div class="bg-image" style="background-image: url({{ asset('assets/media/various/login-bg.jpg') }});">
             <div class="row g-0 justify-content-center bg-primary-dark-op">
                 <div class="hero-static col-sm-8 col-md-6 col-xl-4 d-flex align-items-center p-2 px-sm-0">
                     <!-- Sign In Block -->
                     <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
-                        @if(session('confirmEmail'))
+                        @if(session('msg'))
                             <div class="alert alert-success alert-dismissible" role="alert">
-                                <p class="mb-0">{{ session('confirmEmail') }}</p>
+                                <p class="mb-0">{{ session('msg') }}</p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                             </div>
                         @endif
                         <div class="block-content block-content-full px-lg-5 px-xl-6 py-4 py-md-5 py-lg-6 bg-body-extra-light">
                             <!-- Header -->
-                            <div class="mb-2 text-center">
-                                <a class="link-fx fw-bold fs-1" href="#">
-                                    <span class="text-dark">Auto</span><span class="text-primary">task</span>
-                                </a>
-                                <p class="text-uppercase fw-bold fs-sm text-muted">Sign In</p>
+                            <div class="mb-5 text-center">
+                                <img style="width: 150px; height: 150px;" src="{{ asset('assets/media/various/logo.png') }}" class="img-fluid" alt="">
                             </div>
                             <!-- END Header -->
 
@@ -51,25 +46,24 @@
                                 @csrf
                                 <div class="mb-4">
                                     <div class="input-group input-group-lg">
-                                        <input type="email" class="form-control" id="login-username" name="email"
-                                               placeholder="E-mail">
+                                        <input type="email" class="form-control" id="login-username" name="email" placeholder="E-mail">
                                         <span class="input-group-text">
-                          <i class="fa fa-user-circle"></i>
-                        </span>
+                                            <i class="fa fa-user-circle"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <div class="input-group input-group-lg">
                                         <input type="password" class="form-control" id="login-password" name="password"
-                                               placeholder="Password">
+                                               placeholder="Senha">
                                         <span class="input-group-text">
-                          <i class="fa fa-asterisk"></i>
-                        </span>
+                                            <i class="fa fa-asterisk"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="text-center mb-4">
                                     <button type="submit" class="btn btn-hero btn-primary">
-                                        <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Sign In
+                                        <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Entrar
                                     </button>
                                 </div>
                                 <div class="fw-semibold fs-sm py-1 text-center">

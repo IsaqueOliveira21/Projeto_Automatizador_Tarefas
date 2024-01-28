@@ -29,10 +29,12 @@ class NotificacaoTarefaController extends Controller
             ->get();
         foreach($tarefas as $tarefa) {
             if(!in_array($tarefa->id, $notificacoesIds)) {
-                NotificacaoTarefa::create([
-                    'user_id' => auth()->user()->id,
-                    'tarefa_id' => $tarefa->id,
-                ]);
+                if(Carbon::now()->format('Y-m-d') > $tarefa->data_conclusao) {
+                    NotificacaoTarefa::create([
+                        'user_id' => auth()->user()->id,
+                        'tarefa_id' => $tarefa->id,
+                    ]);
+                }
             }
         }
         $notificacoesQtd = count(NotificacaoTarefa::where('user_id', auth()->user()->id)->get());
