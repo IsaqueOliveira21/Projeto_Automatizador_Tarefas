@@ -18,13 +18,13 @@
             <li class="nav-item">
                 <button class="nav-link active" id="btabs-animated-slideup-home-tab" data-bs-toggle="tab"
                         data-bs-target="#btabs-animated-slideup-home" role="tab"
-                        aria-controls="btabs-animated-slideup-home" aria-selected="true">Tarefas Pendentes
+                        aria-controls="btabs-animated-slideup-home" aria-selected="true">Pendentes
                 </button>
             </li>
             <li class="nav-item">
                 <button class="nav-link" id="btabs-animated-slideup-profile-tab" data-bs-toggle="tab"
                         data-bs-target="#btabs-animated-slideup-profile" role="tab"
-                        aria-controls="btabs-animated-slideup-profile" aria-selected="false">Tarefas Concluídas
+                        aria-controls="btabs-animated-slideup-profile" aria-selected="false">Concluídas
                 </button>
             </li>
         </ul>
@@ -49,7 +49,7 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td class="js-task-content fw-semibold">
+                                            <td class="js-task-content fw-semibold col-12">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalDetalhesTarefa"
                                                    data-item="
                                                    <h4>{{ $tarefa->titulo }} ({{ \Carbon\Carbon::createFromFormat('Y-m-d', $tarefa->data_inicio)->format('d/m/Y') }})</h4>

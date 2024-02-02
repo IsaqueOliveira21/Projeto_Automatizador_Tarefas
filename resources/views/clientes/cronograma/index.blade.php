@@ -28,6 +28,7 @@
                     </div>
                 </div>
             @endif
+            <div class="table-responsive">
             <table class="table table-striped table-vcenter">
                 <thead>
                 <tr>
@@ -264,6 +265,7 @@
                     </tr>
                 </tfoot>
             </table>
+            </div>
         </div>
     </div>
 @endsection

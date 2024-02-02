@@ -254,13 +254,13 @@
         <div class="content py-0">
             <div class="row fs-sm">
                 <div class="col-sm-6 order-sm-2 mb-1 mb-sm-0 text-center text-sm-end">
-                    Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold"
-                                                                               href="https://1.envato.market/ydb"
+                    Developed by <a class="fw-semibold"
+                                                                               href="https://github.com/IsaqueOliveira21"
                                                                                target="_blank">Isaque</a>
                 </div>
                 <div class="col-sm-6 order-sm-1 text-center text-sm-start">
                     <a class="fw-semibold" href="#" target="_blank">Desde</a> &copy;
-                    <span data-toggle="year-copy"></span>
+                    <span>2024</span>
                 </div>
             </div>
         </div>

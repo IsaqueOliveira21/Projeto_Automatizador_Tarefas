@@ -73,16 +73,22 @@ class TarefaService
 
     public function concluirTarefa($tarefa) {
         try {
+            if(count($tarefa->notificacoesTarefas) > 0) {
+                foreach($tarefa->notificacoesTarefas as $notificacao) {
+                    $notificacao->delete();
+                }
+            }
             if($tarefa->realizada == 0) {
                 $tarefa->update([
                     'realizada' => 1,
                 ]);
+                return redirect()->back()->with('notificacao', ['tipo' => 'success', 'msg' => 'Tarefa concluida com sucesso!']);
             } else {
                 $tarefa->update([
                     'realizada' => 0,
                 ]);
+                return redirect()->back()->with('notificacao', ['tipo' => 'success', 'msg' => 'Tarefa recuperada!']);
             }
-            return redirect()->back();
         } catch(Exception $e) {
             //dd($e->getMessage());
             return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao concluir esta tarefa...']);
