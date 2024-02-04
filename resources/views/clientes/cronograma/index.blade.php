@@ -59,7 +59,7 @@
                                               <label class="form-label mt-4" for="example-select">Dia:</label>
                                               <select class="form-select" id="example-select" name="dia">
                                                 <option value="">ESCOLHA UM DIA</option>
-                                                <option value="SEGUNDA">SEGUNDA</option>
+                                                <option value="SEGUNDA" selected>SEGUNDA</option>
                                                 <option value="TERCA">TERÇA</option>
                                                 <option value="QUARTA">QUARTA</option>
                                                 <option value="QUINTA">QUINTA</option>
@@ -89,7 +89,7 @@
                                               <select class="form-select" id="example-select" name="dia">
                                                 <option value="">ESCOLHA UM DIA</option>
                                                 <option value="SEGUNDA">SEGUNDA</option>
-                                                <option value="TERCA">TERÇA</option>
+                                                <option value="TERCA" selected>TERÇA</option>
                                                 <option value="QUARTA">QUARTA</option>
                                                 <option value="QUINTA">QUINTA</option>
                                                 <option value="SEXTA">SEXTA</option>
@@ -119,7 +119,7 @@
                                                 <option value="">ESCOLHA UM DIA</option>
                                                 <option value="SEGUNDA">SEGUNDA</option>
                                                 <option value="TERCA">TERÇA</option>
-                                                <option value="QUARTA">QUARTA</option>
+                                                <option value="QUARTA" selected>QUARTA</option>
                                                 <option value="QUINTA">QUINTA</option>
                                                 <option value="SEXTA">SEXTA</option>
                                                 <option value="SABADO">SABADO</option>
@@ -149,7 +149,7 @@
                                                 <option value="SEGUNDA">SEGUNDA</option>
                                                 <option value="TERCA">TERÇA</option>
                                                 <option value="QUARTA">QUARTA</option>
-                                                <option value="QUINTA">QUINTA</option>
+                                                <option value="QUINTA" selected>QUINTA</option>
                                                 <option value="SEXTA">SEXTA</option>
                                                 <option value="SABADO">SABADO</option>
                                                 <option value="DOMINGO">DOMINGO</option>
@@ -179,7 +179,7 @@
                                                 <option value="TERCA">TERÇA</option>
                                                 <option value="QUARTA">QUARTA</option>
                                                 <option value="QUINTA">QUINTA</option>
-                                                <option value="SEXTA">SEXTA</option>
+                                                <option value="SEXTA" selected>SEXTA</option>
                                                 <option value="SABADO">SABADO</option>
                                                 <option value="DOMINGO">DOMINGO</option>
                                               </select>
@@ -209,7 +209,7 @@
                                                 <option value="QUARTA">QUARTA</option>
                                                 <option value="QUINTA">QUINTA</option>
                                                 <option value="SEXTA">SEXTA</option>
-                                                <option value="SABADO">SABADO</option>
+                                                <option value="SABADO" selected>SABADO</option>
                                                 <option value="DOMINGO">DOMINGO</option>
                                               </select>
                                             </div>
@@ -239,7 +239,7 @@
                                                 <option value="QUINTA">QUINTA</option>
                                                 <option value="SEXTA">SEXTA</option>
                                                 <option value="SABADO">SABADO</option>
-                                                <option value="DOMINGO">DOMINGO</option>
+                                                <option value="DOMINGO" selected>DOMINGO</option>
                                               </select>
                                             </div>
                                         </form>'
