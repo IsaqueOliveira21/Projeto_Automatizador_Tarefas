@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Dashmix - Bootstrap 5 Admin Template &amp; UI Framework</title>
+        <title>Fluid - Recupera Senha</title>
 
         <meta name="description"
               content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
@@ -12,9 +12,9 @@
         <meta name="robots" content="noindex, nofollow">
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon_old.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/media/various/logo.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/favicon.png') }}">
         <!-- END Icons -->
 
         <!-- Stylesheets -->
@@ -32,8 +32,8 @@
         <!-- Main Container -->
         <main id="main-container">
             <!-- Page Content -->
-            <div class="bg-image" style="background-image: url('assets/media/photos/photo16@2x.jpg');">
-                <div class="row g-0 justify-content-center bg-black-75">
+            <div class="bg-image" style="background-image: url({{ asset('assets/media/various/login-bg.jpg') }});">
+                <div class="row g-0 justify-content-center bg-primary-dark-op">
                     <div class="hero-static col-sm-8 col-md-6 col-xl-4 d-flex align-items-center p-2 px-sm-0">
                         <!-- Reminder Block -->
                         <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
@@ -42,9 +42,9 @@
                                 <!-- Header -->
                                 <div class="mb-2 text-center">
                                     <a class="link-fx fw-bold fs-1" href="{{ route('user.login') }}">
-                                        <span class="text-dark">Dash</span><span class="text-primary">mix</span>
+                                        <span class="text-primary">Fluid</span>
                                     </a>
-                                    <p class="text-uppercase fw-bold fs-sm text-muted">Password Reminder</p>
+                                    <p class="text-uppercase fw-bold fs-sm text-muted">Recuperar Senha</p>
                                 </div>
                                 <!-- END Header -->
 

@@ -4,25 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Dashmix - Bootstrap 5 Admin Template &amp; UI Framework</title>
+        <title>Fluid</title>
 
         <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
-        <!-- Open Graph Meta -->
-        <meta property="og:title" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework">
-        <meta property="og:site_name" content="Dashmix">
-        <meta property="og:description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
-
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon_old.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/media/various/logo.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/favicon.png') }}">
         <!-- END Icons -->
 
         <!-- Stylesheets -->
@@ -40,14 +32,14 @@
         <!-- Main Container -->
         <main id="main-container">
             <!-- Page Content -->
-            <div class="bg-image" style="background-image: url({{ asset('assets/media/photos/photo20@2x.jpg') }});">
+            <div class="bg-image" style="background-image: url({{ asset('assets/media/various/login-bg.jpg') }});">
                 <div class="row g-0 justify-content-end bg-xwork-op">
                     <!-- Main Section -->
                     <div class="hero-static col-md-5 d-flex flex-column bg-body-extra-light">
                         <!-- Header -->
                         <div class="flex-grow-0 p-5">
                             <a class="link-fx fw-bold fs-2" href="{{ route('user.login') }}">
-                                <span class="text-dark">Auto</span><span class="text-primary">task</span>
+                                <span class="text-primary">Fluid</span>
                             </a>
                             <p class="text-uppercase fw-bold fs-sm text-muted mb-0">
                                 Automatizador de Tarefas

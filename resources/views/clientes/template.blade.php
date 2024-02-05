@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>Autotask - Dashboard</title>
+    <title>Fluid</title>
 
     <meta name="description"
           content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
@@ -22,10 +22,9 @@
 
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon_old.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180"
-          href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/media/various/logo.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/favicon.png') }}">
     <!-- END Icons -->
 
     <!-- Stylesheets -->
@@ -57,7 +56,7 @@
         <div class="smini-visible-block">
             <div class="content-header bg-primary">
                 <!-- Logo -->
-                <a class="fw-semibold text-white tracking-wide" href="index.html">
+                <a class="fw-semibold text-white tracking-wide" href="#">
                     D<span class="opacity-75">x</span>
                 </a>
                 <!-- END Logo -->
@@ -70,7 +69,7 @@
             <div class="content-header justify-content-lg-center bg-primary">
                 <!-- Logo -->
                 <a class="fw-semibold text-white tracking-wide" href="#">
-                    Auto<span class="opacity-75">task</span>
+                    <span class="opacity-75">Fluid</span>
                 </a>
                 <!-- END Logo -->
 
@@ -217,7 +216,7 @@
     <main id="main-container">
 
         <!-- Hero -->
-        <div class="bg-image" style="background-image: url({{asset('assets/media/photos/photo18@2x.jpg')}});">
+        <div class="bg-image" style="background-image: url({{asset('assets/media/various/background-template.jpg')}});">
             <div class="bg-black-50">
                 <div class="content content-full content-top">
                     <div class="py-4 text-center">
