@@ -22,17 +22,14 @@ class UserController extends Controller
     public function forgotPassword() {
         return view('auth.forgotPass');
     }
-
-    public function redefinirSenhaEmail(Request $request) {
-        $user = User::where('email', $request->email)->first();
-        if($user) {
-            Mail::to($request->email)->send(new RedefinirSenhaMail($user->id));
-        }
-        return redirect()->route('user.login')->with('msg', 'Enviamos um e-mail de redefinição de senha para você.');
-    }
     public function redefinirSenhaView(User $user)
     {
         return view('auth.newPass', compact('user'));
+    }
+    public function redefinirSenhaEmail(Request $request) {
+        $user = User::where('email', $request->email)->first();
+        $msg = $this->service->redefinirSenhaEmail($user);
+        return redirect()->route('user.login')->with('msg', $msg);
     }
     public function redefinirSenha(User $user, Request $request)
     {
@@ -81,14 +78,8 @@ class UserController extends Controller
 
     public function confirmEmail($id){ // PASSAR PARA O SERVICE
         $user = User::find($id);
-        if(!isset($user->email_verified_at)) {
-            $user->update([
-                'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
-            ]);
-            return redirect()->route('user.login')->with('msg', 'E-mail verificado com sucesso!');
-        } else {
-            return redirect()->route('user.login')->with('msg', 'Seu e-mail ja foi verificado!');
-        }
+        $msg = $this->service->confirmEmail($user);
+        return redirect()->route('user.login')->with('msg', $msg);
     }
 
     public function resendEmail(User $user) {

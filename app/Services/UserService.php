@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Mail\ConfirmEmail;
+use App\Mail\RedefinirSenhaMail;
 use App\Models\NotificacaoTarefa;
 use App\Models\Tarefa;
 use App\Models\User;
@@ -75,6 +76,26 @@ class UserService
         } catch (Exception $e) {
             //dd($e->getMessage());
             return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao atualizar seu perfil...']);
+        }
+    }
+
+    public function redefinirSenhaEmail($user) {
+        if($user) {
+            Mail::to($user->email)->send(new RedefinirSenhaMail($user->id));
+            return 'Enviamos um e-mail de redefinição de senha para você.';
+        } else {
+            return 'E-mail não encontrado em nosso sistema.';
+        }
+    }
+
+    public function confirmEmail($user) {
+        if(!isset($user->email_verified_at)) {
+            $user->update([
+                'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            return 'E-mail verificado com sucesso!';
+        } else {
+            return 'Seu e-mail ja foi verificado!';
         }
     }
 }
