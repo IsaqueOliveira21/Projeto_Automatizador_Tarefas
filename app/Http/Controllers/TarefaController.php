@@ -35,6 +35,7 @@ class TarefaController extends Controller
             ]);
         }
         $service = $this->service->store($input);
+        $msg = new TarefaResource($service);
         return redirect()->route('tarefas.index')->with('msg', $service);
     }
 

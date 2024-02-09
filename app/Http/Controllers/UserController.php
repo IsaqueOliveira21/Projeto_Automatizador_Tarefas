@@ -73,7 +73,8 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|string'
         ]);
-        return $this->service->create($input);
+        $msg = $this->service->create($input);
+        return redirect()->route('user.login')->with('msg', $msg);
     }
 
     public function confirmEmail($id){ // PASSAR PARA O SERVICE
@@ -96,6 +97,7 @@ class UserController extends Controller
         $input = $request->validate([
             'name' => 'required|string'
         ]);
-        return $this->service->update($input);
+        $msg = $this->service->update($input);
+        return redirect()->back()->with('notificacao', $msg);
     }
 }

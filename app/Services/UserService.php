@@ -59,7 +59,7 @@ class UserService
                 'password' => $input['password'],
             ]);
             Mail::to($user->email)->send(new ConfirmEmail([$user->id]));
-            return redirect()->route('user.login')->with('msg', 'Uma mensagem de confirmação foi enviada para seu e-mail!');
+            return 'Uma mensagem de confirmação foi enviada para seu e-mail!';
         } catch (Exception $e) {
             //dd($e->getMessage());
             return redirect()->route('user.login')->with('error', 'Ocorreu um erro ao realizar o cadastro...');
@@ -72,10 +72,10 @@ class UserService
             Auth::user()->update([
                 'name' => $input['name']
             ]);
-            return redirect()->back()->with('notificacao', ['tipo' => 'success', 'msg' => 'Perfil atualizado com sucesso!']);
+            return ['tipo' => 'success', 'msg' => 'Perfil atualizado com sucesso!'];
         } catch (Exception $e) {
             //dd($e->getMessage());
-            return redirect()->back()->with('notificacao', ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao atualizar seu perfil...']);
+            return ['tipo' => 'danger', 'msg' => 'Ocorreu um erro ao atualizar seu perfil...'];
         }
     }
 
